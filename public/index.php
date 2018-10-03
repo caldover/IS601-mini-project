@@ -1,6 +1,6 @@
 <?php
 
-main::start();
+main::start("example.csv");
 
 class main {
 
