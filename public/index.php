@@ -59,6 +59,7 @@ class Automobile {
     }
 
 }
+
 class AutomobileFactory {
 
     public static function create($make, $model) {
