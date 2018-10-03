@@ -4,10 +4,9 @@ main::start();
 
 class main {
 
-    public static function start() {
-        $records = csv::getRecords();
+    public static function start($filename) {
+        $records = csv::getRecords($filename);
         $table = html::generateTable($records);
-        system::printPage($table);
     }
 
 }
