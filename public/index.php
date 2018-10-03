@@ -14,16 +14,20 @@ class main {
 
 class csv {
 
-    public static function getRecords() {
-
-        $make = 'Subaru';
-        $model = 'WRX';
-        $car = AutomobileFactory::create($make, $model);
-
-        //$records = 'test';
-
-        $records[] = $car;
-        print_r($records);
+    public static function getRecords($filename) {
+        $file = fopen($filename, "r");
+        $fieldNames = array();
+        $count = 0;
+        while(!feof($file)) {
+            $record = fgetcsv($file);
+            if($count == 0) {
+                $fieldNames = $record;
+            } else {
+                $records[] = recordFactory::create($fieldNames, $record);
+            }
+            $count++;
+        }
+        fclose($file);
         return $records;
     }
 
