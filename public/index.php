@@ -1,5 +1,6 @@
 <?php
 
+// start program
 main::start("example.csv");
 
 class main {
