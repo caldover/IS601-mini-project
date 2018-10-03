@@ -43,6 +43,7 @@ class html {
 }
 
 class record {
+
     public function __construct(Array $fieldNames = null, $values = null) {
         $record = array_combine($fieldNames, $values);
         foreach($record as $property => $value) {
@@ -58,6 +59,7 @@ class record {
         $array = (array) $this;
         return $array;
     }
+
 }
 
 class recordFactory {
@@ -66,5 +68,5 @@ class recordFactory {
         $record = new record($fieldNames, $values);
         return $record;
     }
-    
+
 }
