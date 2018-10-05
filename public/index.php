@@ -7,8 +7,7 @@ class main {
 
     public static function start($filename) {
         $records = csv::getRecords($filename);
-        $table = html::generateTable($records); // currently only prints array contents
-
+        $table = html::generateTable($records);
     }
 
 }
