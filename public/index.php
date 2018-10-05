@@ -40,7 +40,10 @@ class html {
         $count = 0;
         $htmlOutput = '';
 
-        $htmlOutput .= '<table>';
+        // Process opening HTML boilerplate
+        html::generateHTMLOpening($htmlOutput);
+
+        $htmlOutput .= '<table class="table table-striped">';
         foreach($records as $record) {
             if($count == 0) {
                 $array = $record->returnArray();
@@ -66,6 +69,8 @@ class html {
         }
         $htmlOutput .= '</tbody></table>';
 
+        // Process closing HTML boilerplate
+        html::generateHTMLClosing($htmlOutput);
 
         // Print generated table
         print $htmlOutput;
@@ -74,7 +79,7 @@ class html {
     private static function generateTableHeader($fields, &$htmlOutput) {
         $htmlOutput .= '<thead><tr>';
         foreach($fields as $field) {
-            $htmlOutput .= "<th>{$field}</th>";
+            $htmlOutput .= "<th scope='col'>{$field}</th>";
         }
         $htmlOutput .= '</tr></thead>';
     }
