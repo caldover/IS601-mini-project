@@ -1,3 +1,4 @@
-First, Last, UCID, Grade, Term
-Keith, Williams, kwilliam, A, Fall2018
-Smith, Joe, jsmith, B, Fall2018
+#, First, Last, UCID, Grade, Term
+1, Keith, Williams, kwilliam, A, Fall2018
+2, Joe, Smith, jsmith, B, Fall2018
+3, Christian, Aldover, caldover, A (Hopefully), Fall2018
