@@ -43,14 +43,13 @@ class html {
         // Process opening HTML boilerplate
         html::generateHTMLOpening($htmlOutput);
 
+        // Include table opening tags
         $htmlOutput .= '<table class="table table-striped">';
         foreach($records as $record) {
             if($count == 0) {
                 $array = $record->returnArray();
                 $fields = array_keys($array);
                 $values = array_values($array);
-                //print_r($fields);
-                //print_r($values);
 
                 // Process table header
                 html::generateTableHeader($fields, $htmlOutput);
@@ -61,12 +60,13 @@ class html {
             } else {
                 $array = $record->returnArray();
                 $values = array_values($array);
-                //print_r($values);
+
                 // Process table row within body
                 html::generateTableRow($values, $htmlOutput);
             }
             $count++;
         }
+        // Include tbody and table closing tags
         $htmlOutput .= '</tbody></table>';
 
         // Process closing HTML boilerplate
