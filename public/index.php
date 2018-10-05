@@ -8,6 +8,7 @@ class main {
     public static function start($filename) {
         $records = csv::getRecords($filename);
         $table = html::generateTable($records); // currently only prints array contents
+
     }
 
 }
@@ -37,20 +38,53 @@ class html {
 
     public static function generateTable($records) {
         $count = 0;
+        $htmlOutput = '';
+
         foreach($records as $record) {
             if($count == 0) {
                 $array = $record->returnArray();
                 $fields = array_keys($array);
                 $values = array_values($array);
-                print_r($fields);
-                print_r($values);
+                //print_r($fields);
+                //print_r($values);
+
+                // Process table header
+                html::generateHeader($fields, $htmlOutput);
+
+                // Begin processing table body
+                $htmlOutput .= '<tbody>';
+                html::generateRow($values, $htmlOutput);
             } else {
                 $array = $record->returnArray();
                 $values = array_values($array);
-                print_r($values);
+                //print_r($values);
+                // Process table row within body
+                html::generateRow($values, $htmlOutput);
             }
             $count++;
         }
+        $htmlOutput .= '</tbody>';
+
+        // Print generated table
+        print '<table>';
+        print $htmlOutput;
+        print '</table>';
+    }
+
+    private static function generateHeader($fields, &$htmlOutput) {
+        $htmlOutput .= '<thead><tr>';
+        foreach($fields as $field) {
+            $htmlOutput .= "<th>{$field}</th>";
+        }
+        $htmlOutput .= '</tr></thead>';
+    }
+
+    private static function generateRow($values, &$htmlOutput) {
+        $htmlOutput .= '<tr>';
+        foreach($values as $value) {
+            $htmlOutput .= "<td>{$value}</td>";
+        }
+        $htmlOutput .= '</tr>';
     }
 
 }
