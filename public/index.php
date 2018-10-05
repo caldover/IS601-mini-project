@@ -40,6 +40,7 @@ class html {
         $count = 0;
         $htmlOutput = '';
 
+        $htmlOutput .= '<table>';
         foreach($records as $record) {
             if($count == 0) {
                 $array = $record->returnArray();
@@ -63,12 +64,11 @@ class html {
             }
             $count++;
         }
-        $htmlOutput .= '</tbody>';
+        $htmlOutput .= '</tbody></table>';
+
 
         // Print generated table
-        print '<table>';
         print $htmlOutput;
-        print '</table>';
     }
 
     private static function generateTableHeader($fields, &$htmlOutput) {
